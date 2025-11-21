@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - EventHub</title>
+  
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="navbar-brand">✨ EventHub</a>
+      <div class="navbar-menu">
+        <a href="index.html" class="navbar-link">Home</a>
+        <a href="events.html" class="navbar-link">Events</a>
+        <a href="register.html" class="navbar-link">Sign Up</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Login Form Section -->
+  <section class="auth-section">
+    <div class="auth-container glass-card fade-in">
+      <h1 class="auth-title">Welcome Back</h1>
+      <p class="auth-subtitle">Login to your EventHub account</p>
+
+      <form id="loginForm" class="auth-form">
+        
+        <div class="form-group">
+          <label class="form-label">Email Address</label>
+          <input 
+            type="email" 
+            name="email" 
+            class="form-input" 
+            placeholder="you@example.com" 
+            required
+          >
+          <span class="form-error"></span>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Password</label>
+          <input 
+            type="password" 
+            name="password" 
+            class="form-input" 
+            placeholder="••••••••" 
+            required
+          >
+          <span class="form-error"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;" id="loginBtn">
+          <span>Login</span>
+        </button>
+
+      </form>
+
+      <p class="auth-footer">
+        Don't have an account? <a href="register.html" class="auth-link">Sign Up</a>
+      </p>
+    </div>
+  </section>
+
+  <script src="js/config.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/utils.js"></script>
+
+  <script>
+    // Handle login form submission
+    document.getElementById('loginForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const formData = {
+        email: e.target.email.value,
+        password: e.target.password.value
+      };
+
+      // Validation
+      const validation = validateForm(formData, {
+        email: { required: true, email: true },
+        password: { required: true, minLength: 6 }
+      });
+
+      if (!validation.isValid) {
+        displayFormErrors(validation.errors);
+        return;
+      }
+
+      const loginBtn = document.getElementById('loginBtn');
+      loginBtn.disabled = true;
+      loginBtn.innerHTML = '<div class="spinner spinner-sm"></div>';
+
+      try {
+        const response = await API.login(formData);
+        
+        // Save token and user data
+        Auth.setToken(response.data.token);
+        Auth.setUser({
+          userId: response.data.userId,
+          name: response.data.name,
+          email: response.data.email,
+          role: response.data.role
+        });
+
+        showNotification('Login successful! Redirecting...', 'success');
+        
+        setTimeout(() => {
+          window.location.href = response.data.role === 'organizer' || response.data.role === 'admin' 
+            ? 'organizer-dashboard.html' 
+            : 'events.html';
+        }, 1000);
+
+      } catch (error) {
+        showNotification(error.message, 'error');
+        loginBtn.disabled = false;
+        loginBtn.innerHTML = '<span>Login</span>';
+      }
+    });
+  </script>
+
+  <style>
+    .auth-section {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6rem 1.5rem 2rem;
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(236, 72, 153, 0.1));
+    }
+
+    .auth-container {
+      max-width: 450px;
+      width: 100%;
+      padding: 3rem;
+    }
+
+    .auth-title {
+      text-align: center;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .auth-subtitle {
+      text-align: center;
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
+    }
+
+    .auth-form {
+      margin-bottom: 1.5rem;
+    }
+
+    .auth-footer {
+      text-align: center;
+      color: var(--text-secondary);
+      font-size: 0.875rem;
+    }
+
+    .auth-link {
+      color: var(--primary-color);
+      font-weight: 600;
+    }
+
+    .auth-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+
+</body>
+</html>

@@ -1,0 +1,126 @@
+/* ========================================
+   RESPONSIVE DESIGN
+======================================== */
+
+/* Tablet & Below (768px) */
+@media (max-width: 768px) {
+  
+  /* Navbar */
+  .navbar-menu {
+    position: fixed;
+    top: 60px;
+    left: -100%;
+    width: 100%;
+    height: calc(100vh - 60px);
+    background: rgba(15, 15, 35, 0.98);
+    backdrop-filter: blur(10px);
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: var(--spacing-lg);
+    transition: left 0.3s ease;
+  }
+
+  .navbar-menu.active {
+    left: 0;
+  }
+
+  .navbar-toggle {
+    display: block;
+  }
+
+  .navbar-link {
+    width: 100%;
+    padding: 1rem;
+    text-align: center;
+    font-size: 1.125rem;
+  }
+
+  /* Hero Section */
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+
+  /* Grid Systems */
+  .event-grid,
+  .ticket-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Cards */
+  .event-card-image {
+    height: 180px;
+  }
+
+  /* Forms */
+  .form-row {
+    flex-direction: column;
+  }
+
+  /* Countdown */
+  .countdown {
+    flex-wrap: wrap;
+  }
+
+  .countdown-item {
+    min-width: 60px;
+    padding: 0.75rem;
+  }
+
+  .countdown-value {
+    font-size: 1.5rem;
+  }
+
+  /* Modals */
+  .modal-content {
+    width: 95%;
+    padding: var(--spacing-md);
+  }
+
+  /* Buttons */
+  .btn-group {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .btn-group .btn {
+    width: 100%;
+  }
+}
+
+/* Mobile (480px) */
+@media (max-width: 480px) {
+  
+  .container {
+    padding: 0 var(--spacing-sm);
+  }
+
+  h1 {
+    font-size: 1.75rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  .navbar-brand {
+    font-size: 1.25rem;
+  }
+
+  .btn {
+    padding: 0.625rem 1.25rem;
+    font-size: 0.875rem;
+  }
+
+  .notification-container {
+    left: 10px;
+    right: 10px;
+  }
+
+  .notification {
+    min-width: auto;
+  }
+}

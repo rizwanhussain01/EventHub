@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Tickets - EventHub</title>
+  
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="navbar-brand">✨ EventHub</a>
+      <div class="navbar-menu" id="navbarMenu">
+        <div id="authLinks"></div>
+      </div>
+      <button class="navbar-toggle" onclick="toggleMobileMenu()">☰</button>
+    </div>
+  </nav>
+  
+  <!-- My Tickets Section -->
+  <section class="section" style="padding-top: 100px;">
+    <div class="container">
+      <div class="page-header fade-in">
+        <h1>My Tickets</h1>
+        <p>View and manage your event registrations</p>
+      </div>
+
+      <div id="ticketsContainer" class="tickets-grid">
+        <!-- Tickets will be loaded here -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Cancel Confirmation Modal -->
+  <div id="cancelModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Cancel Registration?</h3>
+        <button class="modal-close" onclick="closeCancelModal()">&times;</button>
+      </div>
+      <div style="padding: 1.5rem 0;">
+        <p>Are you sure you want to cancel your registration for this event?</p>
+        <p style="color: var(--text-secondary); font-size: 0.875rem; margin-top: 0.5rem;">
+          This action cannot be undone.
+        </p>
+      </div>
+      <div style="display: flex; gap: 1rem; justify-content: flex-end;">
+        <button onclick="closeCancelModal()" class="btn btn-secondary">No, Keep It</button>
+        <button onclick="confirmCancel()" class="btn btn-danger" id="confirmCancelBtn">Yes, Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/my-tickets.js"></script>
+
+  <style>
+    .tickets-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+      min-height: 300px;
+    }
+    .ticket-card {
+      background: var(--bg-card);
+      border: 2px solid var(--glass-border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: var(--transition-normal);
+      position: relative;
+    }
+    .ticket-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--primary-color);
+    }
+    .ticket-header {
+      position: relative;
+      height: 150px;
+      overflow: hidden;
+    }
+    .ticket-header img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .ticket-badge {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: var(--accent-color);
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: var(--radius-full);
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .ticket-content {
+      padding: 1.5rem;
+    }
+    .ticket-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--text-primary);
+    }
+    .ticket-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+    .ticket-info-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--text-secondary);
+      font-size: 0.875rem;
+    }
+    .ticket-id {
+      background: var(--glass-bg);
+      padding: 0.75rem;
+      border-radius: var(--radius-md);
+      text-align: center;
+      font-family: 'Courier New', monospace;
+      font-weight: 600;
+      color: var(--primary-color);
+      margin: 1rem 0;
+    }
+    .ticket-qr {
+      text-align: center;
+      margin-top: 1rem;
+    }
+    .ticket-qr img {
+      height: 130px;
+      margin: auto;
+      border-radius: 12px;
+      background: #fff;
+      box-shadow: 0 2px 8px 0 rgba(0,0,0,0.08);
+    }
+    .ticket-qr .scan-text {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 8px;
+    }
+    .ticket-actions {
+      display: flex;
+      gap: 0.5rem;
+    }
+    .no-tickets {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 4rem 2rem;
+    }
+    .no-tickets-icon {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+      opacity: 0.5;
+    }
+    @media (max-width: 768px) {
+      .tickets-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</body>
+</html>

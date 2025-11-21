@@ -1,0 +1,231 @@
+body {
+  margin: 0;
+  background: #161624;
+  color: #e2e1f4;
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+}
+
+/* Particles.js background, always behind everything */
+#particles-js {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 1;
+}
+
+/* Navbar - modern, homepage-matching */
+.navbar {
+  position: relative;
+  z-index: 2;
+  background: rgba(24,22,36,0.99);
+  box-shadow: 0 2px 9px #36304ccc;
+  padding: 1rem 0;
+  margin-bottom: 0;
+}
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+}
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: 900;
+  letter-spacing: 1px;
+  background: linear-gradient(90deg, #be8fff, #d97ed8, #56ffd5);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-right: 26px;
+  text-decoration:none;
+}
+.nav-link {
+  color:#b4b8ec;font-size:1.1rem;margin-left:22px;text-decoration:none;
+}
+.btn-logout {
+  margin-left:auto;
+  background: #745cf9;
+  color: #fff;
+  border-radius:1.1em;
+  border:none;
+  padding:7px 18px;
+  box-shadow:0 1px 18px #4b42c6b0;
+  font-weight:600; font-size:1.06rem;
+  cursor:pointer;
+}
+
+/* Hero section for centering chat and title */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding-top: 70px;
+}
+.hero-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 1.6rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.hero-title {
+  font-size: clamp(2rem,5vw,3rem);
+  font-weight: 900;
+  margin-bottom: 0.7rem;
+  background: linear-gradient(90deg,#be8fff,#d97ed8,#56ffd5);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero-subtitle {
+  font-size: 1.15rem;
+  color: #bdbfcf;
+  margin-bottom: 32px;
+}
+
+/* AI Chatbox styles - wide, modern, fixed input row at bottom */
+.ai-chat-container {
+  width: 100%;
+  max-width: 760px;
+  min-height: 500px;
+  margin: 0 auto 28px auto;
+  background: rgba(26, 18, 48, 0.97);
+  border-radius: 24px;
+  box-shadow: 0 8px 40px #7159fc70, 0 2px 20px #985fff80;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  position: relative;
+  padding-bottom: 0;
+}
+
+.ai-messages {
+  flex: 1 1 auto;
+  max-height: 420px;
+  min-height: 220px;
+  padding: 44px 32px 18px 32px;
+  overflow-y: auto;
+  font-size: 1.14rem;
+  margin-bottom: 0;
+  word-break: break-word;
+}
+
+/* ---- Chat message formatting ---- */
+.ai-msg-user {
+  text-align: right;
+  margin-bottom: 13px;
+}
+.ai-msg-user span {
+  display: inline-block;
+  background: #7c3aed;
+  color: #fff;
+  padding: 9px 19px;
+  border-radius: 9px 17px 2px 16px;
+  font-size: 1.01rem;
+  box-shadow: 0 2px 10px #2c235740;
+}
+.ai-msg-ai {
+  text-align: left;
+  margin-bottom: 13px;
+}
+.ai-msg-ai span {
+  display: inline-block;
+  background: #20203c;
+  color: #e2e0f6;
+  padding: 9px 16px;
+  border-radius: 19px 14px 17px 6px;
+  font-size: 1.04rem;
+  box-shadow: 0 2px 10px #23234444;
+  white-space: pre-line;
+  word-break: break-word;
+}
+
+/* Headings/Lists/Breaks in messages */
+.ai-msg-ai span h1, .ai-msg-ai span h2, .ai-msg-ai span h3 {
+  color: #ffe3ff;
+  margin: 18px 0 10px 0;
+  font-weight: 700;
+  font-size: 1.17rem;
+}
+.ai-msg-ai span ul, .ai-msg-ai span ol {
+  margin: 10px 0 10px 22px;
+  padding-left: 14px;
+}
+.ai-msg-ai span li {
+  margin-bottom: 8px;
+  font-size: 1.04rem;
+}
+.ai-msg-ai span br {
+  margin-bottom: 9px;
+  height: 0;
+  display: block;
+  content: "";
+}
+
+/* Typing input row anchored at bottom */
+.ai-chat-input-row {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  padding: 0 30px 32px 30px;
+  background: transparent;
+  position: relative;
+  border-top: none;
+}
+
+.ai-chat-input-row input {
+  flex: 1 1 auto;
+  padding: 15px 18px;
+  font-size: 1.11rem;
+  border-radius: 10px 0 0 10px;
+  border: none;
+  background: #191a2b;
+  color: #fff;
+  box-shadow: 0 2px 6px #23234413;
+  outline: none;
+  margin-right: 0;
+}
+
+.ai-chat-input-row button {
+  border-radius: 0 10px 10px 0;
+  border: none;
+  background: linear-gradient(90deg,#7c3aed,#9f53fa,#c066fe);
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.08rem;
+  padding: 0 32px;
+  height: 48px;
+  margin-left: -2px;
+  box-shadow: 0 1px 12px #7c3aed77;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.ai-chat-input-row button:hover {
+  background: linear-gradient(90deg,#985fff,#d97ed8,#56ffd5);
+}
+
+/* Responsive design for mobile/tablet */
+@media (max-width: 900px) {
+  .hero-content, .ai-chat-container { max-width: 98vw;} 
+  .ai-chat-container {min-height: 320px;border-radius: 14px;}
+  .ai-messages { padding: 14px 7px 10px 7px; min-height: 70px; max-height:140px;}
+  .ai-chat-input-row { padding: 0 7px 10px 7px;}
+  .ai-chat-input-row input { font-size: 1rem; padding: 11px 9px;}
+  .ai-chat-input-row button { padding: 0 14px; height: 36px; font-size: 1rem;}
+  .navbar-brand {font-size:1.1rem;}
+  .hero-title {font-size:2rem;}
+}

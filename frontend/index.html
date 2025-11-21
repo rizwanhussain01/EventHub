@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EventHub - Modern Event Management Platform</title>
+  
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  
+  <!-- Particles.js CDN -->
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="navbar-brand">✨ EventHub</a>
+      <div class="navbar-menu" id="navbarMenu">
+        <div id="authLinks"></div>
+      </div>
+      <button class="navbar-toggle" onclick="toggleMobileMenu()">☰</button>
+    </div>
+  </nav>
+
+  <!-- Hero Section with Particles -->
+  <section class="hero">
+    <div id="particles-js"></div>
+    <div class="hero-content">
+      <h1 class="hero-title fade-in">Discover Amazing Events</h1>
+      <p class="hero-subtitle fade-in stagger-1">Find, create, and manage events that matter to you</p>
+      <div class="hero-buttons fade-in stagger-2">
+        <a href="events.html" class="btn btn-primary btn-lg">Explore Events</a>
+        <a href="register.html" class="btn btn-secondary btn-lg">Get Started</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Events Section -->
+  <section class="section">
+    <div class="container">
+      <h2 class="text-center">Featured Events</h2>
+      <div class="featured-events" id="featuredEvents">
+        <!-- Featured events will be loaded here -->
+      </div>
+      <div class="text-center" style="margin-top: 2rem;">
+        <a href="events.html" class="btn btn-primary">View All Events →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="section" style="background: var(--bg-secondary); padding: 4rem 0;">
+    <div class="container">
+      <h2 class="text-center">Why Choose EventHub?</h2>
+      <div class="features-grid">
+        <div class="feature-card glass-card slide-up stagger-1">
+          <div class="feature-icon">🎯</div>
+          <h3>Easy Discovery</h3>
+          <p>Find events that match your interests with powerful search and filters</p>
+        </div>
+        <div class="feature-card glass-card slide-up stagger-2">
+          <div class="feature-icon">🎫</div>
+          <h3>Quick Registration</h3>
+          <p>Register for events in seconds and manage your tickets effortlessly</p>
+        </div>
+        <div class="feature-card glass-card slide-up stagger-3">
+          <div class="feature-icon">📊</div>
+          <h3>Organizer Dashboard</h3>
+          <p>Create and manage events with comprehensive analytics and insights</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer style="background: var(--bg-tertiary); padding: 2rem 0; text-align: center; color: var(--text-secondary);">
+    <div class="container">
+      <p>&copy; 2025 EventHub. All rights reserved. Built with ❤️</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/config.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/home.js"></script>
+
+  <style>
+    /* Hero Section Styles */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      padding-top: 80px;
+    }
+
+    #particles-js {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: 0;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      max-width: 800px;
+      padding: 0 1.5rem;
+    }
+
+    .hero-title {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 800;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, #6366f1, #ec4899, #10b981);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* Featured Events Grid */
+    .featured-events {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    /* Features Grid */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .feature-card {
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .feature-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .feature-card h3 {
+      margin-bottom: 0.5rem;
+      color: var(--primary-color);
+    }
+  </style>
+
+</body>
+</html>
