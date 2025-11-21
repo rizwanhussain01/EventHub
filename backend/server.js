@@ -15,9 +15,10 @@ const app = express();
 const allowedOrigins = [
   'http://localhost:5500',
   'http://127.0.0.1:5500',
-  'https://smart-event-hub.vercel.app',        // <-- apna deployed frontend URL
-    // <-- apne actual vercel URL lagao
+  'https://smart-event-hub.vercel.app', // <-- apna actual frontend URL
+  'https://YOUR_FRONTEND_URL'          // <-- production hostname
 ];
+
 
 
 app.use(cors({
