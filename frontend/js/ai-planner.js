@@ -86,6 +86,6 @@ function markdownToHtml(md) {
 // Escape user input to prevent HTML injection
 function escapeHTML(str) {
   return str.replace(/[&<>"']/g, function(m) {
-    return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'''}[m];
+    return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m];
   });
 }
