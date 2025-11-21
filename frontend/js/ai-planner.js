@@ -12,7 +12,8 @@ const chatInput = document.getElementById('aiChatInput');
 const chatMessages = document.getElementById('aiChatMessages');
 
 // Point API to backend (if you are running frontend on LIVE SERVER:5500 and backend on EXPRESS:5000)
-const API_BASE = "http://localhost:5000";
+const API_BASE = "https://eventhub-ouwj.onrender.com/api";
+
 
 chatForm.addEventListener('submit', async (e) => {
   e.preventDefault();
