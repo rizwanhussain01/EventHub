@@ -14,8 +14,11 @@ const app = express();
 // After app is initialized, add middleware:
 const allowedOrigins = [
   'http://localhost:5500',
-  'http://127.0.0.1:5500'
+  'http://127.0.0.1:5500',
+  'https://smart-event-hub.vercel.app',        // <-- apna deployed frontend URL
+    // <-- apne actual vercel URL lagao
 ];
+
 
 app.use(cors({
   origin: function (origin, callback) {
