@@ -4,7 +4,8 @@
 
 const API_CONFIG = {
   // Change this to your deployed backend URL
-  BASE_URL: 'https://eventhub-ouwj.onrender.com',
+  BASE_URL: 'https://eventhub-ouwj.onrender.com/api',
+
   
   // API Endpoints
   ENDPOINTS: {
