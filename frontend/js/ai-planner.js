@@ -11,9 +11,8 @@ const chatForm = document.getElementById('aiChatForm');
 const chatInput = document.getElementById('aiChatInput');
 const chatMessages = document.getElementById('aiChatMessages');
 
-// Point API to backend (if you are running frontend on LIVE SERVER:5500 and backend on EXPRESS:5000)
+// Point API to backend (PRODUCTION)
 const API_BASE = "https://eventhub-ouwj.onrender.com/api";
-
 
 chatForm.addEventListener('submit', async (e) => {
   e.preventDefault();
@@ -26,8 +25,8 @@ chatForm.addEventListener('submit', async (e) => {
   addAIMessage("<div class='spinner spinner-sm'></div>", true);
 
   try {
-    // ALWAYS use full backend URL for fetch during local dev
-    const response = await fetch(`${API_BASE}/api/ai-chat`, {
+    // Use correct endpoint (no double /api/)
+    const response = await fetch(`${API_BASE}/ai-chat`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ prompt: text })
@@ -87,6 +86,6 @@ function markdownToHtml(md) {
 // Escape user input to prevent HTML injection
 function escapeHTML(str) {
   return str.replace(/[&<>"']/g, function(m) {
-    return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m];
+    return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'''}[m];
   });
 }
